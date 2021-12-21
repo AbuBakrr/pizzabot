@@ -13,6 +13,7 @@
 		E502B565277234CA0071F8F1 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B564277234CA0071F8F1 /* Instruction.swift */; };
 		E502B567277234FD0071F8F1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B566277234FD0071F8F1 /* Location.swift */; };
 		E502B5692772350F0071F8F1 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B5682772350F0071F8F1 /* Map.swift */; };
+		E502B56D277239040071F8F1 /* DistanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */; };
 		E50EDC832771D80B000D831F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC822771D80B000D831F /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		E502B564277234CA0071F8F1 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		E502B566277234FD0071F8F1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E502B5682772350F0071F8F1 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCalculatorTests.swift; sourceTree = "<group>"; };
 		E50EDC7F2771D80B000D831F /* Pizzabot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pizzabot; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50EDC822771D80B000D831F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
+				E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */,
 			);
 			path = InstructorTests;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E502B56D277239040071F8F1 /* DistanceCalculatorTests.swift in Sources */,
 				E502B55C277234B00071F8F1 /* InstructorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

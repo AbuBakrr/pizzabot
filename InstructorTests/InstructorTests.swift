@@ -10,9 +10,6 @@ import Instructor
 
 final class Instructor {
     
-    func measureDistance(from firstLocation: Location, to secondLocation: Location) -> Int {
-        return abs(firstLocation.x - secondLocation.x) + abs(firstLocation.y - secondLocation.y)
-    }
 }
 
 class InstructorTests: XCTestCase {
@@ -28,15 +25,4 @@ class InstructorTests: XCTestCase {
         sut = nil
         super.tearDown()
     }
-    
-    func test_calculatesCorrectDistances() {
-        // Given
-        let locationA = Location(x: 1, y: 3)
-        let locationB = Location(x: 4, y: 1)
-        
-        // Then
-        let distance = sut.measureDistance(from: locationA, to: locationB)
-        XCTAssertEqual(distance, 5)
-    }
-
 }
