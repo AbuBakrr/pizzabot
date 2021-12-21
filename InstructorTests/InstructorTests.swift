@@ -10,6 +10,17 @@ import Instructor
 
 final class Instructor {
     
+    // MARK: - Properties
+    
+//    let locations: [Location]
+//    let map: Map
+    
+    // MARK: - Init
+//    init(map: Map, locations: [Location]) {
+////        self.map = map
+//        
+//    }
+    
     static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
         return generateInstructionsToMoveOverXAxis(from: start.x, to: end.x) + generateInstructionsToMoveOverYAxis(from: start.y, to: end.y)
     }
