@@ -12,14 +12,14 @@ final class Instructor {
     
     // MARK: - Properties
     
-//    let locations: [Location]
-//    let map: Map
+    let map: Map
+    var locations: [Location]
     
     // MARK: - Init
-//    init(map: Map, locations: [Location]) {
-////        self.map = map
-//        
-//    }
+    init(map: Map, locations: [Location] = []) {
+        self.map = map
+        self.locations = locations
+    }
     
     static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
         return generateInstructionsToMoveOverXAxis(from: start.x, to: end.x) + generateInstructionsToMoveOverYAxis(from: start.y, to: end.y)
@@ -48,7 +48,8 @@ class InstructorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = Instructor()
+        let map = Map(width: 5, height: 5)
+        sut = Instructor(map: map)
     }
     
     override func tearDown() {
