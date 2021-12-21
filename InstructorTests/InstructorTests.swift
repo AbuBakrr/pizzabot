@@ -13,12 +13,16 @@ final class Instructor {
     // MARK: - Properties
     
     let map: Map
-    var locations: [Location]
+    private(set) var locations: [Location]
     
     // MARK: - Init
     init(map: Map, locations: [Location] = []) {
         self.map = map
         self.locations = locations
+    }
+    
+    func set(locations: [Location]) {
+        self.locations = locations.filter { map.includes(location: $0) }
     }
     
     static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
@@ -55,6 +59,21 @@ class InstructorTests: XCTestCase {
     override func tearDown() {
         sut = nil
         super.tearDown()
+    }
+    
+    func test_setLocationsFiltersOutNonIncludedPoints() {
+        // Given
+        let locations: [Location] = [
+            Location(x: 6, y: 6),
+            Location(x: 1, y: 2),
+            Location(x: -1, y: 2)
+        ]
+        
+        // When
+        sut.set(locations: locations)
+        
+        // Then
+        XCTAssertEqual(sut.locations, [Location(x: 1, y: 2)])
     }
     
     func test_generationOfMovemenetsOnXAxis() {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Location {
+public struct Location: Equatable {
     
     public let x: Int
     public let y: Int
