@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E50EDC832771D80B000D831F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC822771D80B000D831F /* main.swift */; };
+		E50EDC8A2771DAFE000D831F /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC892771DAFE000D831F /* Instruction.swift */; };
+		E50EDC8C2771E7A2000D831F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8B2771E7A2000D831F /* Location.swift */; };
+		E50EDC8E2771E7E4000D831F /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8D2771E7E4000D831F /* Map.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		E50EDC7F2771D80B000D831F /* Pizzabot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pizzabot; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50EDC822771D80B000D831F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E50EDC892771DAFE000D831F /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		E50EDC8B2771E7A2000D831F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E50EDC8D2771E7E4000D831F /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				E50EDC822771D80B000D831F /* main.swift */,
+				E50EDC892771DAFE000D831F /* Instruction.swift */,
+				E50EDC8B2771E7A2000D831F /* Location.swift */,
+				E50EDC8D2771E7E4000D831F /* Map.swift */,
 			);
 			path = Pizzabot;
 			sourceTree = "<group>";
@@ -120,6 +129,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50EDC8A2771DAFE000D831F /* Instruction.swift in Sources */,
+				E50EDC8C2771E7A2000D831F /* Location.swift in Sources */,
+				E50EDC8E2771E7E4000D831F /* Map.swift in Sources */,
 				E50EDC832771D80B000D831F /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
