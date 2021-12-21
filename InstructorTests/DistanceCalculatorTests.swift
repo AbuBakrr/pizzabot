@@ -10,8 +10,8 @@ import Instructor
 
 final class DistanceCalculator {
     
-    static func measureDistance(from firstLocation: Location, to secondLocation: Location) -> Int {
-        return abs(firstLocation.x - secondLocation.x) + abs(firstLocation.y - secondLocation.y)
+    static func measureDistance(from start: Location, to end: Location) -> Int {
+        return abs(start.x - end.x) + abs(start.y - end.y)
     }
 }
 
