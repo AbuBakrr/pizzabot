@@ -12,6 +12,7 @@
 		E50EDC8C2771E7A2000D831F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8B2771E7A2000D831F /* Location.swift */; };
 		E50EDC8E2771E7E4000D831F /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8D2771E7E4000D831F /* Map.swift */; };
 		E50EDC962771EC55000D831F /* PizzabotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC952771EC55000D831F /* PizzabotTests.swift */; };
+		E5CB09C82771F754008D3EE3 /* InstructorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB09C72771F754008D3EE3 /* InstructorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 		E50EDC8D2771E7E4000D831F /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E50EDC932771EC55000D831F /* PizzabotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PizzabotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50EDC952771EC55000D831F /* PizzabotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzabotTests.swift; sourceTree = "<group>"; };
+		E5CB09C72771F754008D3EE3 /* InstructorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E50EDC952771EC55000D831F /* PizzabotTests.swift */,
+				E5CB09C72771F754008D3EE3 /* InstructorTests.swift */,
 			);
 			path = PizzabotTests;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5CB09C82771F754008D3EE3 /* InstructorTests.swift in Sources */,
 				E50EDC962771EC55000D831F /* PizzabotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
