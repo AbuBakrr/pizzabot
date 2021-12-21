@@ -11,6 +11,7 @@
 		E50EDC8A2771DAFE000D831F /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC892771DAFE000D831F /* Instruction.swift */; };
 		E50EDC8C2771E7A2000D831F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8B2771E7A2000D831F /* Location.swift */; };
 		E50EDC8E2771E7E4000D831F /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC8D2771E7E4000D831F /* Map.swift */; };
+		E50EDC962771EC55000D831F /* PizzabotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC952771EC55000D831F /* PizzabotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,10 +32,19 @@
 		E50EDC892771DAFE000D831F /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		E50EDC8B2771E7A2000D831F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E50EDC8D2771E7E4000D831F /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		E50EDC932771EC55000D831F /* PizzabotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PizzabotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50EDC952771EC55000D831F /* PizzabotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzabotTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E50EDC7C2771D80B000D831F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50EDC902771EC55000D831F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -48,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				E50EDC812771D80B000D831F /* Pizzabot */,
+				E50EDC942771EC55000D831F /* PizzabotTests */,
 				E50EDC802771D80B000D831F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				E50EDC7F2771D80B000D831F /* Pizzabot */,
+				E50EDC932771EC55000D831F /* PizzabotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +81,14 @@
 				E50EDC8D2771E7E4000D831F /* Map.swift */,
 			);
 			path = Pizzabot;
+			sourceTree = "<group>";
+		};
+		E50EDC942771EC55000D831F /* PizzabotTests */ = {
+			isa = PBXGroup;
+			children = (
+				E50EDC952771EC55000D831F /* PizzabotTests.swift */,
+			);
+			path = PizzabotTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +111,23 @@
 			productReference = E50EDC7F2771D80B000D831F /* Pizzabot */;
 			productType = "com.apple.product-type.tool";
 		};
+		E50EDC922771EC55000D831F /* PizzabotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E50EDC972771EC55000D831F /* Build configuration list for PBXNativeTarget "PizzabotTests" */;
+			buildPhases = (
+				E50EDC8F2771EC55000D831F /* Sources */,
+				E50EDC902771EC55000D831F /* Frameworks */,
+				E50EDC912771EC55000D831F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PizzabotTests;
+			productName = PizzabotTests;
+			productReference = E50EDC932771EC55000D831F /* PizzabotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -102,6 +139,9 @@
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					E50EDC7E2771D80B000D831F = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					E50EDC922771EC55000D831F = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
@@ -120,9 +160,20 @@
 			projectRoot = "";
 			targets = (
 				E50EDC7E2771D80B000D831F /* Pizzabot */,
+				E50EDC922771EC55000D831F /* PizzabotTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E50EDC912771EC55000D831F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E50EDC7B2771D80B000D831F /* Sources */ = {
@@ -133,6 +184,14 @@
 				E50EDC8C2771E7A2000D831F /* Location.swift in Sources */,
 				E50EDC8E2771E7E4000D831F /* Map.swift in Sources */,
 				E50EDC832771D80B000D831F /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E50EDC8F2771EC55000D831F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E50EDC962771EC55000D831F /* PizzabotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +335,48 @@
 			};
 			name = Release;
 		};
+		E50EDC982771EC55000D831F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6QQ8KTCVV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.itechart.pizzabot.PizzabotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E50EDC992771EC55000D831F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6QQ8KTCVV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.itechart.pizzabot.PizzabotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -293,6 +394,15 @@
 			buildConfigurations = (
 				E50EDC872771D80B000D831F /* Debug */,
 				E50EDC882771D80B000D831F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E50EDC972771EC55000D831F /* Build configuration list for PBXNativeTarget "PizzabotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E50EDC982771EC55000D831F /* Debug */,
+				E50EDC992771EC55000D831F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
