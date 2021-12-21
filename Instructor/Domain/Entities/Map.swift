@@ -1,6 +1,6 @@
 //
 //  Map.swift
-//  Pizzabot
+//  Instructor
 //
 //  Created by Abu-Bakr Jabbarov on 12/21/21.
 //
