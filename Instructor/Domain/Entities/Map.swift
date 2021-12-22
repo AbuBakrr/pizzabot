@@ -17,6 +17,7 @@ public struct Map {
     // MARK: - Init
     
     public init(width: Int, height: Int) {
+        guard width > 0, height > 0 else { fatalError("Width and height must be larger than zero!") }
         self.width = width
         self.height = height
     }

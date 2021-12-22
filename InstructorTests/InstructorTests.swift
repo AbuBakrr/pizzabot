@@ -13,16 +13,29 @@ final class Instructor {
     // MARK: - Properties
     
     let map: Map
-    private(set) var locations: [Location]
+    private(set) var locations: [Location] = []
     
     // MARK: - Init
-    init(map: Map, locations: [Location] = []) {
+    
+    init(map: Map) {
         self.map = map
-        self.locations = locations
     }
     
     func set(locations: [Location]) {
         self.locations = locations.filter { map.includes(location: $0) }
+    }
+    
+    func generateInstructions() -> [Instruction] {
+        var instructions: [Instruction] = []
+        var startingPoint = Location(x: 0, y: 0)
+        
+        for location in locations {
+            let moveInstructions = Instructor.generateInstructionsToMove(from: startingPoint, to: location)
+            instructions.append(contentsOf: moveInstructions)
+            instructions.append(.dropPizza)
+            startingPoint = location
+        }
+        return instructions
     }
     
     static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
@@ -47,22 +60,10 @@ final class Instructor {
 }
 
 class InstructorTests: XCTestCase {
-
-    var sut: Instructor!
-    
-    override func setUp() {
-        super.setUp()
-        let map = Map(width: 5, height: 5)
-        sut = Instructor(map: map)
-    }
-    
-    override func tearDown() {
-        sut = nil
-        super.tearDown()
-    }
     
     func test_setLocationsFiltersOutNonIncludedPoints() {
         // Given
+        let sut = makeSUT()
         let locations: [Location] = [
             Location(x: 6, y: 6),
             Location(x: 1, y: 2),
@@ -155,5 +156,58 @@ class InstructorTests: XCTestCase {
         let instructions5 = Instructor.generateInstructionsToMove(from: start5, to: end5)
         let expectedInstructions5: [Instruction] = [.moveEast]
         XCTAssertEqual(instructions5, expectedInstructions5)
+    }
+    
+    func test_generationOfInstructions() {
+        // Given
+        let sut = makeSUT()
+        
+        // Case #1
+        
+        let point1_1 = Location(x: 1, y: 3)
+        let point1_2 = Location(x: 4, y: 4)
+        
+        // When #1
+        sut.set(locations: [point1_1, point1_2])
+        
+        // Then #2
+        let instructions1 = sut.generateInstructions()
+        let expectedInstructions1: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth,
+                                                    .dropPizza,
+                                                    .moveEast, .moveEast, .moveEast, .moveNorth,
+                                                    .dropPizza]
+        XCTAssertEqual(instructions1, expectedInstructions1)
+        
+        // Case #2
+        
+        let point2_1 = Location(x: 1, y: 3)
+        let point2_2 = Location(x: 4, y: 4)
+        let point2_3 = Location(x: 4, y: 2)
+        let point2_4 = Location(x: 4, y: 2)
+        let point2_5 = Location(x: 0, y: 1)
+        let point2_6 = Location(x: 3, y: 2)
+        let point2_7 = Location(x: 2, y: 3)
+        let point2_8 = Location(x: 4, y: 1)
+
+        // When #2
+        sut.set(locations: [point2_1, point2_2, point2_3, point2_4, point2_5, point2_6, point2_7, point2_8])
+        
+        // Then #2
+        let instructions2 = sut.generateInstructions()
+        let expectedInstructions2: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth, .dropPizza,
+                                                    .moveEast, .moveEast, .moveEast, .moveNorth, .dropPizza,
+                                                    .moveSouth, .moveSouth, .dropPizza,
+                                                    .dropPizza,
+                                                    .moveWest, .moveWest, .moveWest, .moveWest, .moveSouth,.dropPizza,
+                                                    .moveEast, .moveEast, .moveEast, .moveNorth, .dropPizza,
+                                                    .moveWest, .moveNorth, .dropPizza,
+                                                    .moveEast, .moveEast, .moveSouth, .moveSouth, .dropPizza]
+        XCTAssertEqual(instructions2, expectedInstructions2)
+    }
+    
+    // MARK: - Helperrs
+    
+    private func makeSUT(map: Map = Map(width: 5, height: 5)) -> Instructor {
+        return Instructor(map: map)
     }
 }
