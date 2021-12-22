@@ -23,6 +23,17 @@ class ArgumentParserTests: XCTestCase {
     }
     
     func test_locationArgumentsValidation() {
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0, 0)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(1, 3)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(4,2)"))
         
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(4,2"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("4,2)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(-4,2)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(-4, 2.3)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(4, 2, 3)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("3"))
     }
+    
+    
 }
