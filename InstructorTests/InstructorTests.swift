@@ -8,57 +8,6 @@
 import XCTest
 import Instructor
 
-final class Instructor {
-    
-    // MARK: - Properties
-    
-    let map: Map
-    private(set) var locations: [Location] = []
-    
-    // MARK: - Init
-    
-    init(map: Map) {
-        self.map = map
-    }
-    
-    func set(locations: [Location]) {
-        self.locations = locations.filter { map.includes(location: $0) }
-    }
-    
-    func generateInstructions() -> [Instruction] {
-        var instructions: [Instruction] = []
-        var startingPoint = Location(x: 0, y: 0)
-        
-        for location in locations {
-            let moveInstructions = Instructor.generateInstructionsToMove(from: startingPoint, to: location)
-            instructions.append(contentsOf: moveInstructions)
-            instructions.append(.dropPizza)
-            startingPoint = location
-        }
-        return instructions
-    }
-    
-    static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
-        return generateInstructionsToMoveOverXAxis(from: start.x, to: end.x) + generateInstructionsToMoveOverYAxis(from: start.y, to: end.y)
-    }
-    
-    static func generateInstructionsToMoveOverXAxis(from start: Int, to end: Int) -> [Instruction] {
-        let distance = end - start
-        let count = abs(distance)
-        let instruction: Instruction = distance > 0 ? .moveEast : .moveWest
-        
-        return [Instruction](repeating: instruction, count: count)
-    }
-    
-    static func generateInstructionsToMoveOverYAxis(from start: Int, to end: Int) -> [Instruction] {
-        let distance = end - start
-        let count = abs(distance)
-        let instruction: Instruction = distance > 0 ? .moveNorth : .moveSouth
-        
-        return [Instruction](repeating: instruction, count: count)
-    }
-}
-
 class InstructorTests: XCTestCase {
     
     func test_setLocationsFiltersOutNonIncludedPoints() {

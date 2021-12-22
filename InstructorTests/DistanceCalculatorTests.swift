@@ -8,13 +8,6 @@
 import XCTest
 import Instructor
 
-final class DistanceCalculator {
-    
-    static func measureDistance(from start: Location, to end: Location) -> Int {
-        return abs(start.x - end.x) + abs(start.y - end.y)
-    }
-}
-
 class DistanceCalculatorTests: XCTestCase {
 
     func test_calculatesCorrectDistances() {
