@@ -17,6 +17,7 @@
 		E502B56F27725BBB0071F8F1 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B56E27725BBB0071F8F1 /* MapTests.swift */; };
 		E502B572277309140071F8F1 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B571277309140071F8F1 /* Instructor.swift */; };
 		E502B57427733A1A0071F8F1 /* DistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B57327733A1A0071F8F1 /* DistanceCalculator.swift */; };
+		E502B57627733CB50071F8F1 /* InstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502B57527733CB50071F8F1 /* InstructionTests.swift */; };
 		E50EDC832771D80B000D831F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50EDC822771D80B000D831F /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		E502B56E27725BBB0071F8F1 /* MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTests.swift; sourceTree = "<group>"; };
 		E502B571277309140071F8F1 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
 		E502B57327733A1A0071F8F1 /* DistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCalculator.swift; sourceTree = "<group>"; };
+		E502B57527733CB50071F8F1 /* InstructionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionTests.swift; sourceTree = "<group>"; };
 		E50EDC7F2771D80B000D831F /* Pizzabot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pizzabot; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50EDC822771D80B000D831F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
 				E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */,
 				E502B56E27725BBB0071F8F1 /* MapTests.swift */,
+				E502B57527733CB50071F8F1 /* InstructionTests.swift */,
 			);
 			path = InstructorTests;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				E502B56D277239040071F8F1 /* DistanceCalculatorTests.swift in Sources */,
 				E502B55C277234B00071F8F1 /* InstructorTests.swift in Sources */,
+				E502B57627733CB50071F8F1 /* InstructionTests.swift in Sources */,
 				E502B56F27725BBB0071F8F1 /* MapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
