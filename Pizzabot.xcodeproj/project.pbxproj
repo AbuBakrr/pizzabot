@@ -89,8 +89,8 @@
 		E502B550277234B00071F8F1 /* Instructor */ = {
 			isa = PBXGroup;
 			children = (
-				E502B570277308F70071F8F1 /* Data */,
-				E502B56A277235890071F8F1 /* Domain */,
+				E502B570277308F70071F8F1 /* Core */,
+				E502B56B277235960071F8F1 /* Models */,
 				E502B551277234B00071F8F1 /* Instructor.h */,
 			);
 			path = Instructor;
@@ -99,39 +99,47 @@
 		E502B55A277234B00071F8F1 /* InstructorTests */ = {
 			isa = PBXGroup;
 			children = (
-				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
-				E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */,
-				E502B56E27725BBB0071F8F1 /* MapTests.swift */,
-				E502B57527733CB50071F8F1 /* InstructionTests.swift */,
+				E502B578277341F70071F8F1 /* Core */,
+				E502B577277341D60071F8F1 /* Models */,
 			);
 			path = InstructorTests;
 			sourceTree = "<group>";
 		};
-		E502B56A277235890071F8F1 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				E502B56B277235960071F8F1 /* Entities */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		E502B56B277235960071F8F1 /* Entities */ = {
+		E502B56B277235960071F8F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E502B564277234CA0071F8F1 /* Instruction.swift */,
-				E502B5682772350F0071F8F1 /* Map.swift */,
 				E502B566277234FD0071F8F1 /* Location.swift */,
+				E502B5682772350F0071F8F1 /* Map.swift */,
 			);
-			path = Entities;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		E502B570277308F70071F8F1 /* Data */ = {
+		E502B570277308F70071F8F1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E502B571277309140071F8F1 /* Instructor.swift */,
 				E502B57327733A1A0071F8F1 /* DistanceCalculator.swift */,
+				E502B571277309140071F8F1 /* Instructor.swift */,
 			);
-			path = Data;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E502B577277341D60071F8F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
+				E502B56E27725BBB0071F8F1 /* MapTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E502B578277341F70071F8F1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E502B56C277239040071F8F1 /* DistanceCalculatorTests.swift */,
+				E502B57527733CB50071F8F1 /* InstructionTests.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		E50EDC762771D80B000D831F = {
