@@ -10,7 +10,7 @@ import Instructor
 
 class InstructionTests: XCTestCase {
     
-    func test_instructionIdentifier() {
+    func test_commandIdentifierForInstrction() {
         XCTAssertEqual(Instruction.moveEast.command, "E")
         XCTAssertEqual(Instruction.moveNorth.command, "N")
         XCTAssertEqual(Instruction.moveWest.command, "W")

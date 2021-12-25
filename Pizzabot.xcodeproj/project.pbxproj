@@ -155,7 +155,7 @@
 		E502B577277341D60071F8F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
+				E502B57527733CB50071F8F1 /* InstructionTests.swift */,
 				E502B56E27725BBB0071F8F1 /* MapTests.swift */,
 			);
 			path = Models;
@@ -164,7 +164,7 @@
 		E502B578277341F70071F8F1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E502B57527733CB50071F8F1 /* InstructionTests.swift */,
+				E502B55B277234B00071F8F1 /* InstructorTests.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
