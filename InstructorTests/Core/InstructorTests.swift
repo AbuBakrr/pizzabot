@@ -17,7 +17,7 @@ class InstructorTests: XCTestCase {
             Location(x: 6, y: 6),
             Location(x: 1, y: 2),
             Location(x: 0, y: 0),
-            Location(x: -1, y: 2)
+            Location(x: 0, y: 6)
         ]
         
         // When
@@ -67,36 +67,39 @@ class InstructorTests: XCTestCase {
         XCTAssertEqual(instructions3, expectedInstructions3)
     }
     
-    func test_generationOfMovements() {
-        // Case #1
+    func test_generationOfMovement_from_0_0_to_0_0() {
         let start1 = Location(x: 0, y: 0)
         let end1 = Location(x: 0, y: 0)
         let instructions1 = Instructor.generateInstructionsToMove(from: start1, to: end1)
         let expectedInstructions1: [Instruction] = []
         XCTAssertEqual(instructions1, expectedInstructions1)
-        
-        // Case #2
+    }
+    
+    func test_generationOfMovement_from_0_0_to_1_3() {
         let start2 = Location(x: 0, y: 0)
         let end2 = Location(x: 1, y: 3)
         let instructions2 = Instructor.generateInstructionsToMove(from: start2, to: end2)
         let expectedInstructions2: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth]
         XCTAssertEqual(instructions2, expectedInstructions2)
-        
-        // Case #3
+    }
+   
+    func test_generationOfMovement_from_1_3_to_4_4() {
         let start3 = Location(x: 1, y: 3)
         let end3 = Location(x: 4, y: 4)
         let instructions3 = Instructor.generateInstructionsToMove(from: start3, to: end3)
         let expectedInstructions3: [Instruction] = [.moveEast, .moveEast, .moveEast, .moveNorth]
         XCTAssertEqual(instructions3, expectedInstructions3)
-        
-        // Case #4
+    }
+    
+    func test_generationOfMovement_from_4_2_to_0_0() {
         let start4 = Location(x: 4, y: 2)
         let end4 = Location(x: 0, y: 0)
         let instructions4 = Instructor.generateInstructionsToMove(from: start4, to: end4)
         let expectedInstructions4: [Instruction] = [.moveWest, .moveWest, .moveWest, .moveWest, .moveSouth, .moveSouth]
         XCTAssertEqual(instructions4, expectedInstructions4)
-        
-        // Case #5
+    }
+    
+    func test_generationOfMovement_from_1_1_to_2_2() {
         let start5 = Location(x: 1, y: 1)
         let end5 = Location(x: 2, y: 1)
         let instructions5 = Instructor.generateInstructionsToMove(from: start5, to: end5)
@@ -104,43 +107,42 @@ class InstructorTests: XCTestCase {
         XCTAssertEqual(instructions5, expectedInstructions5)
     }
     
-    func test_generationOfInstructions() {
+    func test_generationOfInstructions_case_1() {
         // Given
         let sut = makeSUT()
-        
-        // Case #1
-        
-        let point1_1 = Location(x: 1, y: 3)
-        let point1_2 = Location(x: 4, y: 4)
+        let point1 = Location(x: 1, y: 3)
+        let point2 = Location(x: 4, y: 4)
         
         // When #1
-        sut.set(locations: [point1_1, point1_2])
+        sut.set(locations: [point1, point2])
         
         // Then #2
-        let instructions1 = sut.generateInstructions()
-        let expectedInstructions1: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth,
+        let instructions = sut.generateInstructions()
+        let expectedInstructions: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth,
                                                     .dropPizza,
                                                     .moveEast, .moveEast, .moveEast, .moveNorth,
                                                     .dropPizza]
-        XCTAssertEqual(instructions1, expectedInstructions1)
-        
-        // Case #2
-        
-        let point2_1 = Location(x: 1, y: 3)
-        let point2_2 = Location(x: 4, y: 4)
-        let point2_3 = Location(x: 4, y: 2)
-        let point2_4 = Location(x: 4, y: 2)
-        let point2_5 = Location(x: 0, y: 1)
-        let point2_6 = Location(x: 3, y: 2)
-        let point2_7 = Location(x: 2, y: 3)
-        let point2_8 = Location(x: 4, y: 1)
+        XCTAssertEqual(instructions, expectedInstructions)
+    }
+    
+    func test_generationOfInstructions_case_2() {
+        // Given
+        let sut = makeSUT()
+        let point1 = Location(x: 1, y: 3)
+        let point2 = Location(x: 4, y: 4)
+        let point3 = Location(x: 4, y: 2)
+        let point4 = Location(x: 4, y: 2)
+        let point5 = Location(x: 0, y: 1)
+        let point6 = Location(x: 3, y: 2)
+        let point7 = Location(x: 2, y: 3)
+        let point8 = Location(x: 4, y: 1)
 
-        // When #2
-        sut.set(locations: [point2_1, point2_2, point2_3, point2_4, point2_5, point2_6, point2_7, point2_8])
+        // When
+        sut.set(locations: [point1, point2, point3, point4, point5, point6, point7, point8])
         
-        // Then #2
-        let instructions2 = sut.generateInstructions()
-        let expectedInstructions2: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth, .dropPizza,
+        // Then
+        let instructions = sut.generateInstructions()
+        let expectedInstructions: [Instruction] = [.moveEast, .moveNorth, .moveNorth, .moveNorth, .dropPizza,
                                                     .moveEast, .moveEast, .moveEast, .moveNorth, .dropPizza,
                                                     .moveSouth, .moveSouth, .dropPizza,
                                                     .dropPizza,
@@ -148,7 +150,7 @@ class InstructorTests: XCTestCase {
                                                     .moveEast, .moveEast, .moveEast, .moveNorth, .dropPizza,
                                                     .moveWest, .moveNorth, .dropPizza,
                                                     .moveEast, .moveEast, .moveSouth, .moveSouth, .dropPizza]
-        XCTAssertEqual(instructions2, expectedInstructions2)
+        XCTAssertEqual(instructions, expectedInstructions)
     }
     
     // MARK: - Helperrs

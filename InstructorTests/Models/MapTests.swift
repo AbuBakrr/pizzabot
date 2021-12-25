@@ -36,7 +36,7 @@ class MapTests: XCTestCase {
         XCTAssertEqual(sut.includes(location: location3), true)
         
         // Case 4
-        let location4 = Location(x: -1, y: 4)
+        let location4 = Location(x: 0, y: 6)
         XCTAssertEqual(sut.includes(location: location4), false)
     }
 }
