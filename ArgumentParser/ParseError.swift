@@ -20,7 +20,7 @@ enum ParseError: LocalizedError {
         case .invalidMapSizeArgument:
             return "An invalid first argument is passed"
         case .invalidLocationArgument:
-            return "One of the arguments for location is invalid"
+            return "Invalid argument is passed for location"
             
         }
     }

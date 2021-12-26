@@ -46,40 +46,14 @@ public final class ArgumentParser {
         return Map(width: width, height: height)
     }
     
-    public static func parseLocationArguments( _ arguments: [String]) throws -> [Location] {
-        var locations: [Location] = []
-        
-        for argument in arguments {
-            guard argument.count > 3 else {
-                throw ParseError.invalidLocationArgument
-            }
-            
-            if argument.first == "(" && argument.last != ")" {
-                throw ParseError.invalidLocationArgument
-            }
-            
-            if argument.first != "(" && argument.last == ")" {
-                throw ParseError.invalidLocationArgument
-            }
-            
-            let arguments = argument
-                .filter { "-0123456789,".contains($0) }
-                .split(separator: ",")
-            
-            guard arguments.count == 2 else {
-                throw ParseError.invalidLocationArgument
-            }
-            
-            guard let x = Int(arguments[0]),
-                  let y = Int(arguments[1]),
-                  x >= 0, y >= 0 else {
-                      throw ParseError.invalidLocationArgument
-                  }
-            
-            locations.append(Location(x: x, y: y))
-            
-        }
-
-        return locations
+    public static func validateLocationArgument( _ argument: String) -> Bool {
+        // ^\\( - Argument should start with an opening prefix
+        // \\d+) - followed by a positive digit
+        // (,|.) - followed by a comma or a dot
+        // (\\d+) - followed by a positive digit
+        // \\)$ - finally ended with a closing parenthesis
+        let regex: String = "^\\(" + "(\\d+)" + "(,|.)" + "(\\d+)" + "\\)$"
+        let isValid = argument.range(of: regex, options: .regularExpression) != nil
+        return isValid
     }
 }

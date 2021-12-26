@@ -20,22 +20,26 @@ class ArgumentParserTests: XCTestCase {
 //        XCTAssertFalse(ArgumentParser.validateFirstArgument("-5x5"))
 //        XCTAssertFalse(ArgumentParser.validateFirstArgument("2x0"))
 //        XCTAssertFalse(ArgumentParser.validateFirstArgument("5x-5"))
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("5x3x3"))
-//    }
-//    
-//    func test_locationArgumentsValidation() {
-//        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0, 0)"))
-//        XCTAssertTrue(ArgumentParser.validateLocationArgument("(1, 3)"))
-//        XCTAssertTrue(ArgumentParser.validateLocationArgument("(4,2)"))
-//        
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("(4,2"))
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("4,2)"))
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("(-4,2)"))
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("(-4, 2.3)"))
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("(4, 2, 3)"))
-//        XCTAssertFalse(ArgumentParser.validateLocationArgument("3"))
-//    }
-//    
+    //        XCTAssertFalse(ArgumentParser.validateFirstArgument("5x3x3"))
+    //    }
+    //
+    func test_locationArguemntsAreValid() {
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(12,2)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,02)"))
+    }
+    
+    func test_locationArguemntsAreInvalid() {
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(-1,2)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,-2)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,2"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("1,2)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(12)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(One, Two)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument(""))
+    }
+    
 //    func test_argumentParsing() {
 //        // Case #1
 //        
