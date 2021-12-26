@@ -21,6 +21,17 @@ public final class ArgumentParser {
         return Map(width: width, height: height)
     }
     
+    public static func parseLocation( _ argument: String) throws -> Location {
+        guard ArgumentParser.validateLocationArgument(argument) else {
+            throw ParseError.invalidLocationCoordinateArgument
+        }
+        
+        let arguments = argument.filter("0123456789,".contains).split(separator: ",")
+        let x = Int(arguments[0])!
+        let y = Int(arguments[1])!
+        return Location(x: x, y: y)
+    }
+    
 //    public static func parse(arguments: [String]) throws -> (map: Map, locations: [Location]) {
 //        let cleanArguments = arguments
 //            .filter { !$0.isEmpty }
