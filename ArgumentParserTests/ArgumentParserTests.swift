@@ -11,6 +11,8 @@ import ArgumentParser
 
 class ArgumentParserTests: XCTestCase {
 
+    // MARK: - Map size's argument validation
+    
     func test_validMapSizeArgumentsAreValid() {
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5x5"))
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5X5"))
@@ -30,6 +32,8 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" "))
     }
     
+    // MARK: - Location coordinate's argument validation
+    
     func test_validLocationArguemntsAreValid() {
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))
@@ -46,19 +50,25 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(One, Two)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument(""))
     }
+
+    // MARK: - Map argument parsing
     
-//    func test_argumentParsing() {
-//        // Case #1
-//        
-//        let arguments1 = ["5x5", "(1, 3)", "(4, 4)"]
-//        let result1 = try! ArgumentParser.parse(arguments: arguments1)
-//        let expectedMap1 = Map(width: 5, height: 5)
-//        let expectedLocations1: [Location] = [
-//            Location(x: 1, y: 3),
-//            Location(x: 4, y: 4),
-//        ]
-//        
-//        XCTAssertEqual(result1.map, expectedMap1)
-//        XCTAssertEqual(result1.locations, expectedLocations1)
-//    }
+    func test_parsesMapSizeArgument_whenPassed_5x5() {
+        do {
+            let map = try ArgumentParser.parseMapSize("5x5")
+            let expectedMap = Map(width: 5, height: 5)
+            XCTAssertEqual(map, expectedMap)
+        } catch {
+            XCTFail("Argument should have been parsed successfully. Check parsing and validation")
+        }
+    }
+    
+    func test_parseMapSizeThrows_invalidMapSizeArgument_whenPassed_5x5() {
+        do {
+            _ = try ArgumentParser.parseMapSize("(1,2")
+            XCTFail("Parser was supposed to throw error. Check map size argument validation")
+        } catch {
+            XCTAssertEqual(error as? ParseError, ParseError.invalidMapSizeArgument)
+        }
+    }
 }

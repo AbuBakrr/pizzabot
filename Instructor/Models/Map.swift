@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Map {
+public struct Map: Equatable {
     
     // MARK: - Properties
     

@@ -10,6 +10,17 @@ import Instructor
 
 public final class ArgumentParser {
 
+    public static func parseMapSize( _ argument: String) throws -> Map {
+        guard ArgumentParser.validateMapSizeArgument(argument) else {
+            throw ParseError.invalidMapSizeArgument
+        }
+        
+        let arguments = argument.replacingOccurrences(of: "X", with: "x").split(separator: "x")
+        let width = Int(arguments[0])!
+        let height = Int(arguments[1])!
+        return Map(width: width, height: height)
+    }
+    
 //    public static func parse(arguments: [String]) throws -> (map: Map, locations: [Location]) {
 //        let cleanArguments = arguments
 //            .filter { !$0.isEmpty }
@@ -33,18 +44,6 @@ public final class ArgumentParser {
 ////        }
 //        
 //    }
-    
-    public static func parseFirstArgument( _ argument: String) throws -> Map {
-        let arguments = argument.split(separator: "x")
-        guard arguments.count == 2,
-              let width = Int(arguments[0]),
-              let height = Int(arguments[1]),
-              width > 0, height > 0 else {
-                  throw ParseError.invalidMapSizeArgument
-              }
-        
-        return Map(width: width, height: height)
-    }
     
     public static func validateMapSizeArgument( _ argument: String) -> Bool {
         // ^[1-9](\\d*) - Map size argument should start with non zero integer
