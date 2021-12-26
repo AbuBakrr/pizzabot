@@ -7,7 +7,7 @@
 
 import XCTest
 import Instructor
-import ArgumentParser
+@testable import ArgumentParser
 
 class ArgumentParserTests: XCTestCase {
 
@@ -112,5 +112,30 @@ class ArgumentParserTests: XCTestCase {
         // Then
         let expectedFilteredArguments = ["5x5", "(1,3)", "(4,3)"]
         XCTAssertEqual(filteredArguments, expectedFilteredArguments)
+    }
+    
+    func test_parseArgumentsReturnsTuple() {
+        // Given
+        let arguments = [
+            "",
+            " ",
+            "5x5",
+            "\n",
+            "(1,3)",
+            "  ",
+            "(4,3)"
+        ]
+        
+        do {
+            // When
+            let tuple: (map: Map, locations: [Location]) = try ArgumentParser.parse(arguments)
+            let expectedTuple: (map: Map, locations: [Location]) = (Map(width: 5, height: 5), [Location(x: 1, y: 3), Location(x: 4, y: 3)])
+            
+            // Then
+            XCTAssertEqual(tuple.map, expectedTuple.map)
+            XCTAssertEqual(tuple.locations, expectedTuple.locations)
+        } catch {
+            XCTFail("Error: \(error). Parsing was supposed to be successful")
+        }
     }
 }

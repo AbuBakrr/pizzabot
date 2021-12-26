@@ -16,7 +16,7 @@ public enum ParseError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidArguments:
-            return "Error while parsing arguments. Please, pass valid arguments. Ex: 5x5 (1, 3) (4, 4)"
+            return "Error while parsing arguments. Please, pass valid arguments. Ex: 5x5 (1,3) (4,4)"
         case .invalidMapSizeArgument:
             return "An invalid map size argument is passed"
         case .invalidLocationCoordinateArgument:
