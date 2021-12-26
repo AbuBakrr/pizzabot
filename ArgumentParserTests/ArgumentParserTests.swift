@@ -11,18 +11,23 @@ import ArgumentParser
 
 class ArgumentParserTests: XCTestCase {
 
-//    func test_firstArgumentValidation() {
-//        XCTAssertTrue(ArgumentParser.validateFirstArgument("5x5"))
-//        XCTAssertTrue(ArgumentParser.validateFirstArgument("1x3"))
-//        
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("(5x5)"))
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("[5x5]"))
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("-5x5"))
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("2x0"))
-//        XCTAssertFalse(ArgumentParser.validateFirstArgument("5x-5"))
-    //        XCTAssertFalse(ArgumentParser.validateFirstArgument("5x3x3"))
-    //    }
-    //
+    func test_firstArgumentValidation() {
+        XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5x5"))
+        XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5X5"))
+        XCTAssertTrue(ArgumentParser.validateMapSizeArgument("1x3"))
+    
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("0x0"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" 5x5"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("(5x5)"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("[5x5]"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("-5x5"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("2x0"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("5x-5"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("5x3x3"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument(""))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" "))
+    }
+    
     func test_locationArguemntsAreValid() {
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))

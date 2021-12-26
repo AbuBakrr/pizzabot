@@ -46,6 +46,12 @@ public final class ArgumentParser {
         return Map(width: width, height: height)
     }
     
+    public static func validateMapSizeArgument( _ argument: String) -> Bool {
+        let regex: String = "^[1-9]" + "(\\d*)" + "(x|X)" + "[1-9]" + "(\\d*)$"
+        let isValid = argument.range(of: regex, options: .regularExpression) != nil
+        return isValid
+    }
+    
     public static func validateLocationArgument( _ argument: String) -> Bool {
         // ^\\( - Argument should start with an opening prefix
         // \\d+) - followed by a positive digit
