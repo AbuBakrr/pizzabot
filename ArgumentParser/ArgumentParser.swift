@@ -32,30 +32,6 @@ public final class ArgumentParser {
         return Location(x: x, y: y)
     }
     
-//    public static func parse(arguments: [String]) throws -> (map: Map, locations: [Location]) {
-//        let cleanArguments = arguments
-//            .filter { !$0.isEmpty }
-//            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-//            
-//        guard cleanArguments.count > 2 else {
-//            throw ParseError.invalidArguments
-//        }
-//        
-//        let firstArgument = cleanArguments[0]
-//        let locationArguments: [String] = Array(cleanArguments.dropFirst())
-//        
-////        guard ArgumentParser.parseFirstArgument(firstArgument) else {
-////            throw ParseError.invalidMapSizeArgument
-////        }
-//        
-////        for locationArgument in locationArguments {
-////            if ArgumentParser.validateLocationArgument(locationArgument) == false {
-////                throw ParseError.invalidLocationArgument
-////            }
-////        }
-//        
-//    }
-    
     public static func validateMapSizeArgument( _ argument: String) -> Bool {
         // ^[1-9](\\d*) - Map size argument should start with non zero integer
         // (x|X) - followed by x or X character
