@@ -97,15 +97,7 @@ class ArgumentParserTests: XCTestCase {
     
     func test_filteringEmptyArguments() {
         // Given
-        let arguments = [
-            "",
-            " ",
-            "5x5",
-            "\n",
-            "(1,3)",
-            "  ",
-            "(4,3)"
-        ]
+        let arguments = ["", " ", "5x5", "\n", "(1,3)", "  ", "(4,3)"]
         
         // When
         let filteredArguments = ArgumentParser.filterEmptyArguments(arguments)
@@ -114,17 +106,11 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertEqual(filteredArguments, expectedFilteredArguments)
     }
     
+    // MARK: - Parsing
+    
     func test_parseArgumentsReturnsTuple() {
         // Given
-        let arguments = [
-            "",
-            " ",
-            "5x5",
-            "\n",
-            "(1,3)",
-            "  ",
-            "(4,3)"
-        ]
+        let arguments = ["", " ", "5x5", "\n", "(1,3)", "  ", "(4,3)"]
         
         do {
             // When
@@ -136,6 +122,45 @@ class ArgumentParserTests: XCTestCase {
             XCTAssertEqual(tuple.locations, expectedTuple.locations)
         } catch {
             XCTFail("Error: \(error). Parsing was supposed to be successful")
+        }
+    }
+    
+    func test_parseThrows_invalidArguments_whenArgumentsLessThanExpectedAndIncorrect() {
+        // Given
+        let arguments = [" ", "4x4"]
+        
+        do {
+            // When
+            _ = try ArgumentParser.parse(arguments)
+            XCTFail("An exception was supposed to be thrown")
+        } catch {
+            XCTAssertEqual(error as? ParseError, ParseError.invalidArguments)
+        }
+    }
+    
+    func test_parseThrows_invalidMapSizeArgument_whenPassedInvalidMapSizeArgument() {
+        // Given
+        let arguments = ["0x5", "(1,3)", "(4,3)"]
+        
+        do {
+            // When
+            _ = try ArgumentParser.parse(arguments)
+            XCTFail("An exception was supposed to be thrown")
+        } catch {
+            XCTAssertEqual(error as? ParseError, ParseError.invalidMapSizeArgument)
+        }
+    }
+    
+    func test_parseThrows_invalidLocationCoordinateArgument_whenPassedInvalidLocationCoordinate() {
+        // Given
+        let arguments = ["5x5", "(1,3)", "(4,3)", "1,4"]
+        
+        do {
+            // When
+            _ = try ArgumentParser.parse(arguments)
+            XCTFail("An exception was supposed to be thrown")
+        } catch {
+            XCTAssertEqual(error as? ParseError, ParseError.invalidLocationCoordinateArgument)
         }
     }
 }
