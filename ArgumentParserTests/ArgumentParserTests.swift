@@ -11,11 +11,13 @@ import ArgumentParser
 
 class ArgumentParserTests: XCTestCase {
 
-    func test_firstArgumentValidation() {
+    func test_validMapSizeArgumentsAreValid() {
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5x5"))
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5X5"))
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("1x3"))
+    }
     
+    func test_invalidMapSizeArgumentsAreInvalid() {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("0x0"))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" 5x5"))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("(5x5)"))
@@ -28,14 +30,14 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" "))
     }
     
-    func test_locationArguemntsAreValid() {
+    func test_validLocationArguemntsAreValid() {
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(12,2)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,02)"))
     }
     
-    func test_locationArguemntsAreInvalid() {
+    func test_invalidLocationArguemntsAreInvalid() {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(-1,2)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,-2)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,2"))

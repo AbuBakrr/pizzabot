@@ -47,7 +47,10 @@ public final class ArgumentParser {
     }
     
     public static func validateMapSizeArgument( _ argument: String) -> Bool {
-        let regex: String = "^[1-9]" + "(\\d*)" + "(x|X)" + "[1-9]" + "(\\d*)$"
+        // ^[1-9](\\d*) - Map size argument should start with non zero integer
+        // (x|X) - followed by x or X character
+        // [1-9](\\d*)$ - Finally it should end with non zero integer
+        let regex: String = "^[1-9](\\d*)" + "(x|X)" + "[1-9](\\d*)$"
         let isValid = argument.range(of: regex, options: .regularExpression) != nil
         return isValid
     }
