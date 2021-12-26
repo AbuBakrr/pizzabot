@@ -92,4 +92,25 @@ class ArgumentParserTests: XCTestCase {
             XCTAssertEqual(error as? ParseError, ParseError.invalidLocationCoordinateArgument)
         }
     }
+    
+    // MARK: - Filtering empty arguments
+    
+    func test_filteringEmptyArguments() {
+        // Given
+        let arguments = [
+            "",
+            " ",
+            "5x5",
+            "\n",
+            "(1,3)",
+            "  ",
+            "(4,3)"
+        ]
+        
+        // When
+        let filteredArguments = ArgumentParser.filterEmptyArguments(arguments)
+        // Then
+        let expectedFilteredArguments = ["5x5", "(1,3)", "(4,3)"]
+        XCTAssertEqual(filteredArguments, expectedFilteredArguments)
+    }
 }

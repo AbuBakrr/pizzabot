@@ -51,4 +51,8 @@ public final class ArgumentParser {
         let isValid = argument.range(of: regex, options: .regularExpression) != nil
         return isValid
     }
+    
+    public static func filterEmptyArguments( _ arguments: [String]) -> [String] {
+        return arguments.filter { !($0.replacingOccurrences(of: "\n", with: " ").trimmingCharacters(in: .whitespaces)).isEmpty }
+    }
 }
