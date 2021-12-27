@@ -9,12 +9,14 @@ import ArgumentParser
 import Instructor
 
 do {
-    let tuple = try ArgumentParser.parse(Array(CommandLine.arguments.dropFirst()))
-    let instructor = Instructor(map: tuple.map)
-    instructor.set(locations: tuple.locations)
+    let (map, locations) = try ArgumentParser.parse(Array(CommandLine.arguments.dropFirst()))
+    let instructor = Instructor(map: map)
+    instructor.set(locations: locations)
+    
     print(instructor.generateInstructions().map {$0.command }.joined() )
+    
 } catch {
-    print(error.localizedDescription)
+    print(error.localizedDescription, "Please, pass valid arguments. Ex: 5x5 (1,3) (4,4)")
 }
 
 

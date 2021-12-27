@@ -12,9 +12,8 @@ public final class Instructor {
     // MARK: - Properties
     
     let map: Map
-    let currentLocation: Location
-    
-    public private(set) var locations: [Location] = []
+    private let currentLocation: Location
+    private(set) var locations: [Location] = []
     
     // MARK: - Init
     
@@ -45,7 +44,7 @@ public final class Instructor {
         return generateInstructionsToMoveOverXAxis(from: start.x, to: end.x) + generateInstructionsToMoveOverYAxis(from: start.y, to: end.y)
     }
     
-    public static func generateInstructionsToMoveOverXAxis(from start: Int, to end: Int) -> [Instruction] {
+    static func generateInstructionsToMoveOverXAxis(from start: Int, to end: Int) -> [Instruction] {
         let distance = end - start
         let count = abs(distance)
         let instruction: Instruction = distance > 0 ? .moveEast : .moveWest
@@ -53,7 +52,7 @@ public final class Instructor {
         return [Instruction](repeating: instruction, count: count)
     }
     
-    public static func generateInstructionsToMoveOverYAxis(from start: Int, to end: Int) -> [Instruction] {
+    static func generateInstructionsToMoveOverYAxis(from start: Int, to end: Int) -> [Instruction] {
         let distance = end - start
         let count = abs(distance)
         let instruction: Instruction = distance > 0 ? .moveNorth : .moveSouth

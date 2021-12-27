@@ -42,6 +42,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E502B555277234B00071F8F1"
+               BuildableName = "InstructorTests.xctest"
+               BlueprintName = "InstructorTests"
+               ReferencedContainer = "container:Pizzabot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E502B591277345600071F8F1"
+               BuildableName = "ArgumentParserTests.xctest"
+               BlueprintName = "ArgumentParserTests"
+               ReferencedContainer = "container:Pizzabot.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -67,7 +87,7 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "5x5"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "(1,3)"
