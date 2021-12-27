@@ -35,13 +35,15 @@ class ArgumentParserTests: XCTestCase {
     // MARK: - Location coordinate's argument validation
     
     func test_validLocationArguemntsAreValid() {
-        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
-        XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))
-        XCTAssertTrue(ArgumentParser.validateLocationArgument("(12,2)"))
-        XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,02)"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("0,0"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("1.2"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("12,2"))
+        XCTAssertTrue(ArgumentParser.validateLocationArgument("0,02"))
     }
     
     func test_invalidLocationArguemntsAreInvalid() {
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("3, 4"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(3,4)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(-1,2)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,-2)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,2"))
@@ -49,6 +51,7 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(12)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(One, Two)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument(""))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument(" "))
     }
 
     // MARK: - Map argument parsing
@@ -63,9 +66,9 @@ class ArgumentParserTests: XCTestCase {
         }
     }
     
-    func test_parseMapSizeThrows_invalidMapSizeArgument_whenPassed_5x5() {
+    func test_parseMapSizeThrows_invalidMapSizeArgument_whenPassedArgumentWithParenthesisAndComma() {
         do {
-            _ = try ArgumentParser.parseMapSize("(1,2")
+            _ = try ArgumentParser.parseMapSize("(1,2)")
             XCTFail("Parser was supposed to throw error. Check map size argument validation")
         } catch {
             XCTAssertEqual(error as? ParseError, ParseError.invalidMapSizeArgument)
@@ -76,7 +79,7 @@ class ArgumentParserTests: XCTestCase {
     
     func test_parsesLocationCoordinateArgument_whenPassed_3_4() {
         do {
-            let location = try ArgumentParser.parseLocation("(3,4)")
+            let location = try ArgumentParser.parseLocation("3,4")
             let expectedLocation = Location(x: 3, y: 4)
             XCTAssertEqual(location, expectedLocation)
         } catch {
@@ -84,9 +87,9 @@ class ArgumentParserTests: XCTestCase {
         }
     }
     
-    func test_parseLocationCoordinateThrows_invalidLocationCoordinateArgument_whenPassedInvalidValue() {
+    func test_parseLocationCoordinateThrows_invalidLocationCoordinateArgument_whenPassedValuesWithParenthesis() {
         do {
-            _ = try ArgumentParser.parseLocation("(1, 2)")
+            _ = try ArgumentParser.parseLocation("(1,2)")
             XCTFail("Parser was supposed to throw error. Check location coordinate argument validation")
         } catch {
             XCTAssertEqual(error as? ParseError, ParseError.invalidLocationCoordinateArgument)
@@ -97,20 +100,20 @@ class ArgumentParserTests: XCTestCase {
     
     func test_filteringEmptyArguments() {
         // Given
-        let arguments = ["", " ", "5x5", "\n", "(1,3)", "  ", "(4,3)"]
+        let arguments = ["", " ", "5x5", "\n", "1,3", "  ", "4,3"]
         
         // When
         let filteredArguments = ArgumentParser.filterEmptyArguments(arguments)
         // Then
-        let expectedFilteredArguments = ["5x5", "(1,3)", "(4,3)"]
+        let expectedFilteredArguments = ["5x5", "1,3", "4,3"]
         XCTAssertEqual(filteredArguments, expectedFilteredArguments)
     }
     
     // MARK: - Parsing
     
-    func test_parseArgumentsReturnsTuple() {
+    func test_parsingArgumentsReturnsTupleOfMapAndLocations() {
         // Given
-        let arguments = ["", " ", "5x5", "\n", "(1,3)", "  ", "(4,3)"]
+        let arguments = ["", " ", "5x5", "\n", "1,3", "  ", "4,3"]
         
         do {
             // When
@@ -125,7 +128,7 @@ class ArgumentParserTests: XCTestCase {
         }
     }
     
-    func test_parseThrows_invalidArguments_whenArgumentsLessThanExpectedAndIncorrect() {
+    func test_parseThrows_invalidArguments_whenNumberOfArgumentsLessThanExpectedOrIncorrect() {
         // Given
         let arguments = [" ", "4x4"]
         
@@ -140,7 +143,7 @@ class ArgumentParserTests: XCTestCase {
     
     func test_parseThrows_invalidMapSizeArgument_whenPassedInvalidMapSizeArgument() {
         // Given
-        let arguments = ["0x5", "(1,3)", "(4,3)"]
+        let arguments = ["0x5", "1,3", "4,3"]
         
         do {
             // When
@@ -151,9 +154,9 @@ class ArgumentParserTests: XCTestCase {
         }
     }
     
-    func test_parseThrows_invalidLocationCoordinateArgument_whenPassedInvalidLocationCoordinate() {
+    func test_parseThrows_invalidLocationCoordinateArgument_whenPassedAnInvalidLocationCoordinate() {
         // Given
-        let arguments = ["5x5", "(1,3)", "(4,3)", "1,4"]
+        let arguments = ["5x5", "1,3", "4,3", "1, 4"]
         
         do {
             // When

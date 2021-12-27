@@ -58,12 +58,11 @@ public final class ArgumentParser {
     }
     
     static func validateLocationArgument( _ argument: String) -> Bool {
-        // ^\\( - Argument should start with an opening prefix
-        // \\d+) - followed by a positive digit
+        // \\d+) - Argument should start with a positive integer
         // (,|.) - followed by a comma or a dot
-        // (\\d+) - followed by a positive digit
-        // \\)$ - finally ended with a closing parenthesis
-        let regex: String = "^\\(" + "(\\d+)" + "(,|.)" + "(\\d+)" + "\\)$"
+        // (\\d+) - It should end with a positive integer
+
+        let regex: String = "^(\\d+)" + "(,|.)" + "(\\d+)$"
         let isValid = argument.range(of: regex, options: .regularExpression) != nil
         return isValid
     }

@@ -5,8 +5,8 @@
 //  Created by Abu-Bakr Jabbarov on 12/21/21.
 //
 import Foundation
-import ArgumentParser
 import Instructor
+import ArgumentParser
 
 do {
     let (map, locations) = try ArgumentParser.parse(Array(CommandLine.arguments.dropFirst()))
@@ -16,7 +16,7 @@ do {
     print(instructor.generateInstructions().map {$0.command }.joined() )
     
 } catch {
-    print(error.localizedDescription, "Please, pass valid arguments. Ex: 5x5 (1,3) (4,4)")
+    print(error.localizedDescription, "Please, pass valid arguments. Ex: 5x5 1,3 4,4")
 }
 
 
