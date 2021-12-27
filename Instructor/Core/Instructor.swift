@@ -12,12 +12,16 @@ public final class Instructor {
     // MARK: - Properties
     
     let map: Map
+    let currentLocation: Location
+    
     public private(set) var locations: [Location] = []
     
     // MARK: - Init
     
-    public init(map: Map) {
+    public init(map: Map,
+                currentLocation: Location = Location(x: 0, y: 0)) {
         self.map = map
+        self.currentLocation = currentLocation
     }
     
     public func set(locations: [Location]) {
@@ -26,7 +30,7 @@ public final class Instructor {
     
     public func generateInstructions() -> [Instruction] {
         var instructions: [Instruction] = []
-        var startingPoint = Location(x: 0, y: 0)
+        var startingPoint = currentLocation
         
         for location in locations {
             let moveInstructions = Instructor.generateInstructionsToMove(from: startingPoint, to: location)
