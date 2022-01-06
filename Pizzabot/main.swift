@@ -10,7 +10,7 @@ import ArgumentParser
 
 do {
     let (map, locations) = try ArgumentParser.parse(Array(CommandLine.arguments.dropFirst()))
-    let instructor = Instructor(map: map)
+    let instructor: Instructor = DefaultInstructor(map: map)
     instructor.set(locations: locations)
     
     print(instructor.generateInstructions().map {$0.command }.joined() )

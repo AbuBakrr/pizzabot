@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class Instructor {
+public final class DefaultInstructor: Instructor {
     
     // MARK: - Properties
     
@@ -17,8 +17,7 @@ public final class Instructor {
     
     // MARK: - Init
     
-    public init(map: Map,
-                currentLocation: Location = Location(x: 0, y: 0)) {
+    public init(map: Map, currentLocation: Location = Location(x: 0, y: 0)) {
         self.map = map
         self.currentLocation = currentLocation
     }
@@ -32,7 +31,7 @@ public final class Instructor {
         var startingPoint = currentLocation
         
         for location in locations {
-            let moveInstructions = Instructor.generateInstructionsToMove(from: startingPoint, to: location)
+            let moveInstructions = DefaultInstructor.generateInstructionsToMove(from: startingPoint, to: location)
             instructions.append(contentsOf: moveInstructions)
             instructions.append(.dropPizza)
             startingPoint = location
