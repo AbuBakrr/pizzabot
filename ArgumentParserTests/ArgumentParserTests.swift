@@ -13,14 +13,14 @@ class ArgumentParserTests: XCTestCase {
 
     // MARK: - Map size's argument validation
     
-    func test_validMapSizeArgumentsAreValid() {
+    func test_validMapSize_whenPassed_validArgument() {
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("5x5"))
         XCTAssertTrue(ArgumentParser.validateMapSizeArgument("1x3"))
     }
     
     // MARK: - Map size's argument invalidation
     
-    func test_invalidMapSize_whenPassedValue_lessThanOrEqualToZero() {
+    func test_invalidMapSize_whenValuesAre_lessThanOrEqualToZero() {
         // Width and height of map cannot be less than or equal to zero
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("0x0"))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("2x0"))
@@ -28,39 +28,63 @@ class ArgumentParserTests: XCTestCase {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("5x-5"))
     }
     
-    func test_invalidMapSize_whenPassed_valueWithExtraSpaces() {
+    func test_invalidMapSize_whenArgumentHas_extraSpaces() {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" 5x5"))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("5x5 "))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" 5x5 "))
     }
     
-    func test_invalidMapSize_whenPassed_valueWithParenthesis() {
+    func test_invalidMapSize_whenArgumentHas_parenthesis() {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument("(5x5)"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("5x5)"))
+        XCTAssertFalse(ArgumentParser.validateMapSizeArgument("(5x5"))
     }
     
-    func test_invalidMapSize_whenPassed_emptyParameter() {
+    func test_invalidMapSize_whenArgumentIs_empty() {
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(""))
         XCTAssertFalse(ArgumentParser.validateMapSizeArgument(" "))
     }
     
     // MARK: - Location coordinate's argument validation
     
-    func test_validLocationArguemntsAreValid() {
+    func test_validLocationArgument_whenArgumentIs_valid() {
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,0)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(1.2)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(12,2)"))
         XCTAssertTrue(ArgumentParser.validateLocationArgument("(0,02)"))
     }
     
-    func test_invalidLocationArguemntsAreInvalid() {
-        XCTAssertFalse(ArgumentParser.validateLocationArgument("3, 4"))
+    // MARK: - Location coordinate's argument invalidation
+    
+    func test_invalidLocationArgument_whenArgumentHas_extraSpaces() {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(3, 4)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument(" (3,4)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(3,4) "))
+    }
+    
+    func test_invalidLocationArgument_whenArguemntHas_noParentheses() {
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("3,4"))
+    }
+    
+    func test_invalidLocationArgument_whenArgumentHas_noLeadingParentheses() {
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("1,2)"))
+    }
+    
+    func test_invalidLocationArgument_whenArgumentHas_noTrailingParentheses() {
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,2"))
+    }
+    
+    func test_invalidLocationArgument_whenArgumentHas_negativeValues() {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(-1,2)"))
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,-2)"))
-        XCTAssertFalse(ArgumentParser.validateLocationArgument("(1,2"))
-        XCTAssertFalse(ArgumentParser.validateLocationArgument("1,2)"))
+    }
+    
+    func test_invalidLocationArgument_whenArgumentIs_single() {
         XCTAssertFalse(ArgumentParser.validateLocationArgument("(12)"))
-        XCTAssertFalse(ArgumentParser.validateLocationArgument("(One, Two)"))
+        XCTAssertFalse(ArgumentParser.validateLocationArgument("12"))
+    }
+    
+    func test_invalidLocationArgument_whenArgumentIs_empty() {
         XCTAssertFalse(ArgumentParser.validateLocationArgument(""))
         XCTAssertFalse(ArgumentParser.validateLocationArgument(" "))
     }
@@ -109,7 +133,7 @@ class ArgumentParserTests: XCTestCase {
     
     // MARK: - Filtering empty arguments
     
-    func test_filteringEmptyArguments() {
+    func test_filtersEmptyArguments() {
         // Given
         let arguments = ["", " ", "5x5", "\n", "1,3", "  ", "4,3"]
         
@@ -122,7 +146,7 @@ class ArgumentParserTests: XCTestCase {
     
     // MARK: - Parsing
     
-    func test_parsingArgumentsReturnsTupleOfMapAndLocations() {
+    func test_parseArgumentsReturnsTupleOfMapAndLocations() {
         // Given
         let arguments = ["", " ", "5x5", "\n", "(1,3)", "  ", "(4,3)"]
         
