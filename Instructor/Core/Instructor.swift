@@ -11,7 +11,7 @@ public final class Instructor {
     
     // MARK: - Properties
     
-    let map: Map
+    private let map: Map
     private let currentLocation: Location
     private(set) var locations: [Location] = []
     
@@ -40,7 +40,7 @@ public final class Instructor {
         return instructions
     }
     
-    public static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
+    static func generateInstructionsToMove(from start: Location, to end: Location) -> [Instruction] {
         return generateInstructionsToMoveOverXAxis(from: start.x, to: end.x) + generateInstructionsToMoveOverYAxis(from: start.y, to: end.y)
     }
     
